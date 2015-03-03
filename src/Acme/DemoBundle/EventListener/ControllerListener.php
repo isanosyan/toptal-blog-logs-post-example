@@ -17,6 +17,7 @@ class ControllerListener
 
     public function onKernelController(FilterControllerEvent $event)
     {
+        syslog(LOG_INFO, "CONTROLLER\t" . get_class($event->getController()[0]));
         if (HttpKernelInterface::MASTER_REQUEST === $event->getRequestType()) {
             $this->extension->setController($event->getController());
         }

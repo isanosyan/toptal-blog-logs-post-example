@@ -1,5 +1,8 @@
 <?php
 
+require_once(dirname(__DIR__) . '/src/log-begin.php');
+syslog(LOG_INFO, "MODE\tDEV");
+
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Debug\Debug;
 
@@ -28,3 +31,5 @@ $request = Request::createFromGlobals();
 $response = $kernel->handle($request);
 $response->send();
 $kernel->terminate($request, $response);
+
+require_once(dirname(__DIR__) . '/src/log-end.php');

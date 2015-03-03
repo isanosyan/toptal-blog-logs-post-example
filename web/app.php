@@ -1,5 +1,8 @@
 <?php
 
+require_once(dirname(__DIR__) . '/src/log-begin.php');
+syslog(LOG_INFO, "MODE\tPROD");
+
 use Symfony\Component\ClassLoader\ApcClassLoader;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -28,3 +31,5 @@ $request = Request::createFromGlobals();
 $response = $kernel->handle($request);
 $response->send();
 $kernel->terminate($request, $response);
+
+require_once(dirname(__DIR__) . '/src/log-end.php');
